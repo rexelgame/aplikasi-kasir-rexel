@@ -1,0 +1,35 @@
+REXEL GAME - Kasir Barang + Stok Barang + Isi Game & Service (1 aplikasi)
+
+Login (3 akun)
+  Admin    : rexelgame  - akses penuh: Edit/Hapus transaksi, Hapus semua, Impor CSV, Restore data.
+  Karyawan : azmirexel dan revanrexel - boleh input transaksi (harga diisi sendiri),
+             tetapi tidak bisa Edit/Hapus transaksi yang sudah tersimpan.
+  Password awal diberikan oleh pemilik. SEGERA ganti lewat tombol Pengaturan.
+  Di halaman login, pilih dulu "Login sebagai" Admin atau Karyawan.
+
+Cara pakai:
+1. Install Node.js (versi LTS) dari https://nodejs.org (sekali saja).
+2. Extract file zip ini.
+3. Klik dua kali JALANKAN-APLIKASI.bat
+   (pertama kali butuh internet untuk install, setelah itu langsung terbuka).
+4. Untuk membuat file .exe, klik dua kali BUAT-EXE.bat. Hasilnya ada di folder dist.
+
+Untuk dibuka di VS Code: File > Open Folder > pilih folder ini,
+lalu di terminal ketik: npm install, kemudian npm start.
+
+Stok barang:
+- Tab Stok Barang: stok awal diambil dari Excel (1 Nov 2026).
+- Stok masuk diinput manual. Stok keluar otomatis berkurang saat penjualan dicatat di Kasir Barang.
+- Koreksi stok: input stok masuk dengan angka minus.
+
+Lokasi data (aplikasi desktop):
+- Dokumen\Rexel Game\data-rexel.json  = data terbaru, disimpan otomatis tiap ada perubahan.
+- Dokumen\Rexel Game\cadangan\       = salinan otomatis (maks. 40, tiap 15 menit sekali).
+- npm start dan file .exe memakai file yang SAMA. Salin folder Rexel Game ke flashdisk/drive lain sebagai cadangan.
+- Untuk memulihkan dari salah satu file cadangan: klik Restore data lalu pilih file tsb.
+
+Catatan:
+- Data tersimpan di komputer ini. Gunakan tombol "Backup data" secara berkala
+  dan "Restore data" untuk memindahkan data ke komputer lain.
+- Ganti password: tombol Pengaturan. Password yang diganti disimpan di Dokumen\Rexel Game\akun-rexel.json.
+- Lupa password admin: tutup aplikasi, hapus file akun-rexel.json, maka semua password kembali ke password awal.

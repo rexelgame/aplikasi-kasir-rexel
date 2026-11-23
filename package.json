@@ -1,0 +1,21 @@
+{
+  "name": "rexel-game-app",
+  "version": "2.0.0",
+  "description": "Aplikasi Rexel Game: Kasir Barang dan Isi Game & Service",
+  "main": "main.js",
+  "author": "Rexel Game",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.rexelgame.app",
+    "productName": "Rexel Game",
+    "files": ["main.js", "preload.js", "index.html", "style.css", "app.js", "stok-awal.js", "logo.png"],
+    "win": { "icon": "logo.png", "target": "portable" }
+  }
+}

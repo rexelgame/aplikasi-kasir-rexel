@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; base-uri 'none'">
+<title>Rexel Game</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN ADMIN -->
+<section id="login" class="login" aria-label="Login admin">
+  <form id="loginForm" class="login-card">
+    <img src="logo.png" alt="Logo Rexel Game" class="login-logo">
+    <h1>Rexel Game</h1>
+    <p class="mut tengah">Pilih jenis akun, lalu masuk untuk membuka kasir, stok, dan data isi game.</p>
+    <fieldset class="pilih-peran">
+      <legend>Login sebagai</legend>
+      <div class="seg">
+        <label><input type="radio" name="peran" value="admin"><span>Admin</span></label>
+        <label><input type="radio" name="peran" value="karyawan" checked><span>Karyawan</span></label>
+      </div>
+    </fieldset>
+    <label>Username
+      <input id="lUser" name="username" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+    </label>
+    <label>Password
+      <span class="pw">
+        <input id="lPass" name="password" type="password" autocomplete="current-password" required>
+        <button type="button" id="lLihat" class="ghost" aria-pressed="false">Tampilkan</button>
+      </span>
+    </label>
+    <label class="cek"><input type="checkbox" id="lIngat"> Simpan password di perangkat ini</label>
+    <p id="lPeringatan" class="mut kecil hidden">Akun Admin: jangan centang di komputer yang juga dipakai karyawan, karena siapa pun bisa masuk sebagai Admin.</p>
+    <p id="lErr" class="err" role="alert"></p>
+    <button type="submit" id="lMasuk" class="block">Masuk</button>
+  </form>
+</section>
+
+<!-- APLIKASI -->
+<div id="app" class="hidden">
+  <div class="topbar noprint">
+    <span>Login sebagai: <b id="tbNama"></b> <span id="tbPeran" class="peran"></span></span>
+  </div>
+  <header>
+    <div class="brand">
+      <img src="logo.png" alt="Logo Rexel Game">
+      <div><h1>Kasir Rexel Game</h1><p>Instagram @REXELGAME_ · WA 0851-8474-8787</p></div>
+    </div>
+    <div class="acts noprint">
+      <button type="button" id="bBackup" class="ghost">Backup data</button>
+      <button type="button" id="bRestore" class="ghost hanya-admin hidden">Restore data</button>
+      <input type="file" id="fRestore" accept="application/json,.json" class="hidden">
+      <button type="button" id="bPengaturan" class="ghost">Pengaturan</button>
+      <button type="button" id="bKeluar" class="ghost">Keluar</button>
+    </div>
+  </header>
+  <nav id="tabs" class="tabs noprint" role="tablist" aria-label="Menu utama"></nav>
+  <p id="statusSimpan" class="status noprint" role="status"></p>
+  <main id="main"></main>
+</div>
+
+<dialog id="dlg">
+  <p id="dlgTeks"></p>
+  <div class="dlg-aksi">
+    <button type="button" id="dlgBatal" class="ghost">Batal</button>
+    <button type="button" id="dlgOk" class="bad">Hapus</button>
+  </div>
+</dialog>
+<dialog id="dlgSet">
+  <h2>Pengaturan</h2>
+  <section>
+    <h3>Ubah password saya</h3>
+    <p class="mut kecil" id="setAkun"></p>
+    <form id="fPass">
+      <label>Password lama<input type="password" id="pLama" autocomplete="current-password" required></label>
+      <label>Password baru (minimal 6 karakter)<input type="password" id="pBaru" autocomplete="new-password" required></label>
+      <label>Ulangi password baru<input type="password" id="pUlang" autocomplete="new-password" required></label>
+      <label class="cek"><input type="checkbox" id="pLihat"> Tampilkan password</label>
+      <p class="err" id="pErr" role="alert"></p>
+      <button type="submit">Ubah password</button>
+    </form>
+  </section>
+  <section class="hanya-admin hidden">
+    <h3>Atur password karyawan</h3>
+    <p class="mut kecil">Dipakai kalau karyawan lupa password.</p>
+    <form id="fReset">
+      <label>Karyawan<select id="rUser"></select></label>
+      <label>Password baru (minimal 6 karakter)<input type="password" id="rBaru" autocomplete="new-password" required></label>
+      <p class="err" id="rErr" role="alert"></p>
+      <button type="submit">Setel password karyawan</button>
+    </form>
+  </section>
+  <div class="dlg-aksi"><button type="button" id="setTutup" class="ghost">Tutup</button></div>
+</dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="stok-awal.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
